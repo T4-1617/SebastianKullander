@@ -17,7 +17,7 @@ namespace Uppgift2
             Console.Write("skriv in ditt efternamn:");
             string efternamn = Console.ReadLine();
 
-            Console.WriteLine("hej " + namn + " " +efternamn);
+            Console.WriteLine("hej "+efternamn);
             Console.ReadLine();
 
 
