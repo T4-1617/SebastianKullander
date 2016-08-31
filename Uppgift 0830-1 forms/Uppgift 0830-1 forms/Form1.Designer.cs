@@ -38,12 +38,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(277, 368);
+            this.button1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.button1.Location = new System.Drawing.Point(277, 321);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(75, 70);
             this.button1.TabIndex = 0;
             this.button1.Text = "TRYCK";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
@@ -90,7 +91,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(798, 621);
+            this.ClientSize = new System.Drawing.Size(659, 538);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
