@@ -26,8 +26,12 @@ namespace Miniräknare2
 
             int  result = value1 + value2;
 
-            textBox3.Text = result.ToString(); 
-            
+            textBox3.Text = result.ToString();
+
+            textBox1.Text = String.Empty;
+
+            textBox2.Text = String.Empty;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -40,6 +44,11 @@ namespace Miniräknare2
 
             textBox3.Text = result.ToString();
 
+            textBox1.Text = String.Empty;
+
+            textBox2.Text = String.Empty;
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -51,6 +60,11 @@ namespace Miniräknare2
             int result = value1 / value2;
 
             textBox3.Text = result.ToString();
+
+            textBox1.Text = String.Empty;
+
+            textBox2.Text = String.Empty;
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -62,6 +76,11 @@ namespace Miniräknare2
             int result = value1 * value2;
 
             textBox3.Text = result.ToString();
+
+            textBox1.Text = String.Empty;
+
+            textBox2.Text = String.Empty;
+
 
 
         }
