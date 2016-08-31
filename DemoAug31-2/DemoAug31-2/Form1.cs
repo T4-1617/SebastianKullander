@@ -32,6 +32,9 @@ namespace DemoAug31_2
 
             MessageBox.Show(i.ToString());
 
+            int svar;
+            svar = i * 2;
+            MessageBox.Show(svar.ToString());
         }
     }
 }
