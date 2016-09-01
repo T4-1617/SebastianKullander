@@ -51,8 +51,62 @@ namespace Uppgift_0901_1
             Console.WriteLine(reversed);
 
 
+            string lowcase = namn.ToLower();
 
-        }
+
+            for (int i = 0; i < namn.Length; i++)
+                            {
+                                if (i % 2 != 0)
+            Console.Write(lowcase[i].ToString().ToUpper());
+                                else
+            Console.Write(lowcase[i]);
+                            }
+
+
+            Console.WriteLine("skriv in ditt namn igen:");
+            string namn2;
+            namn2 = Console.ReadLine();
+            
+            for (int i = 0; i < namn2.Length; i++)
+            {
+                switch (namn2[i])
+                {
+                    case ('a'):
+                        Console.Write("4");
+                        break;
+                
+                    case ('e'):
+                        Console.Write("3");
+                        break;
+           
+                    case ('i'):
+                        Console.Write("1");
+                        break;
+            
+                        break;
+                    case ('o'):
+                        Console.Write("0");
+                        break;
+                
+                    case ('s'):
+                        Console.Write("$");
+                        break;
+                    case ('t'):
+                        Console.Write("7");
+                        break;
+               
+                    default:
+                        Console.Write(namn2[i]);
+                        break;
+                }
+
+
+
+                }
+
+
+
+            }
 
 
 
