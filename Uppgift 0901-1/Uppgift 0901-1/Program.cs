@@ -30,15 +30,39 @@ namespace Uppgift_0901_1
 
             Console.WriteLine(efternamn + " " + förnamn);
 
+           
+            foreach (char letter in förnamn)
+                            {
+                Console.WriteLine("---->" + letter);
+                            }
+            
+                        foreach (char letter in efternamn)
+                            {
+                Console.WriteLine("------>" + letter);
+                            }
+
+            string namnLower = namn.ToLower();
+            
+
+            char[] reversed = namnLower.ToCharArray();
+            Array.Reverse(reversed);
+            new string(reversed);
+
+            Console.WriteLine(reversed);
+
+
+
+        }
 
 
 
 
-          }
+
+    }
 
 
 
 
         }
-    }
+    
 
