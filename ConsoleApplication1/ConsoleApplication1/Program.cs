@@ -18,7 +18,7 @@ namespace ConsoleApplication1
             {
                 switch (namn)
                 {
-                    case ("a"):
+                    case ('a'):
                         Console.Write("4");
                         break;
                         
