@@ -25,8 +25,26 @@ namespace Sänkaskepp
                     gameBoard[x, y] = false;
                 }
             }
-            
-            
+
+            Random roll = new Random();
+            int Ships = 5;
+            while (Ships > 5)
+            {
+
+                int x = roll.Next(0, 7);
+                int y = roll.Next(0, 5);
+                gameBoard[x, y] = true;
+                
+            }
+
+            for (int i = 0; i < length; i++)
+            {
+                for (int i = 0; i < length; i++)
+                {
+
+                }
+            }
+
         }
     }
 }
