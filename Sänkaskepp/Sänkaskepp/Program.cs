@@ -27,7 +27,7 @@ namespace Sänkaskepp
             }
 
             Random roll = new Random();
-            int Ships = 5;
+            int Ships = 4;
             while (Ships > 0)
             {
 
@@ -37,28 +37,25 @@ namespace Sänkaskepp
                 Ships--;
             }
 
-            for (int y = 0; y < 5; y++)
+            for (int y = 0; y < 7; y++)
             {
-                for (int x = 0; x < 7; x++)
+                for (int x = 0; x < 5; x++)
                 {
                     string Spot;
                     if (gameBoard[x, y] == true)
-                    {
-                        Spot = "X";
-
-                    }
-                    else
-                    {
-                        Spot = "O";
-                        {
-                            Console.Write(Spot);
-                            
-                                 
-                        }
-                        Console.WriteLine();
+                {
+                        Spot = " X ";
+                }
+                else
+                {
+                        Spot = " O ";
+                }
+                    Console.Write(Spot);
+            }
+                Console.WriteLine();                      
                     }
                 }
             }
         }
-    }
-}
+
+
