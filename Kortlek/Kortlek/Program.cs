@@ -10,6 +10,7 @@ namespace Kortlek
     {
         static void Main(string[] args)
         {
+            //skapar kortleken
             bool[,] kortlek = new bool[4, 13];
 
             for (int x = 0; x < 4; x++)
@@ -19,6 +20,7 @@ namespace Kortlek
                     kortlek[x, y] = false;
                 }
             }
+            //sätter ut 52 kort
             Random roll = new Random();
             int kort = 52;
             while (kort > 0)
@@ -27,13 +29,14 @@ namespace Kortlek
                 int y = roll.Next(0, 13);
                 int x = roll.Next(0, 4);
 
-
+                //korten skrivs ut en gång
                 if (kortlek[x, y] == false)
                 {
                     Console.WriteLine("tryck enter för att få ett kort");
                     Console.ReadLine();
                     switch (x)
                     {
+                        //skriver ut vilken färg på kortet man fick
                         case 0:
                             Console.WriteLine("ditt kort är hjärter");
                             break;
@@ -50,7 +53,7 @@ namespace Kortlek
                             Console.WriteLine("ditt kort är klöver");
                             break;
                     }
-                    
+                    //skriver ut vilken valör kortet fick
                         switch (y)
                         {
                             case 0:
@@ -76,7 +79,8 @@ namespace Kortlek
 
                         kortlek[x, y] = true;
                         kort--;
-                    
+                    //skriver ut hur många kort det finns kvar i leken
+                    Console.WriteLine("kort kvar: {0}",kort);
                     }
 
                 }
