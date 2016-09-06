@@ -25,12 +25,57 @@ namespace Kortlek
             {
                 int y = roll.Next(0, 13);
                 int x = roll.Next(0, 4);
-                if (kortlek[x, y] != true) {
-                    Console.WriteLine(x + " " + y);
-                kortlek[x, y] = true;
-                    kort--;
+                if (kortlek[x, y] != true)
+                {
+                    Console.WriteLine("tryck enter för att få ett kort");
+                    Console.ReadLine();
+                    switch (x)
+                    {
+                        case 0:
+                            Console.WriteLine("ditt kort är hjärter");
+                            break;
+
+                        case 1:
+                            Console.WriteLine("ditt kort är spader");
+                            break;
+
+                        case 2:
+                            Console.WriteLine("ditt kort är ruter");
+                            break;
+
+                        case 3:
+                            Console.WriteLine("ditt kort är klöver");
+                            break;
+                    }
+                    
+                        switch (y)
+                        {
+                            case 0:
+                                Console.WriteLine("ess");
+                                break;
+
+                            case 10:
+                                Console.WriteLine("knäckt");
+                                break;
+
+                            case 11:
+                                Console.WriteLine("dam");
+                                break;
+
+                            case 12:
+                                Console.WriteLine("kung");
+                                break;
+
+                            default:
+                                Console.WriteLine(x + 1);
+                                break;
+                        }
+
+                        kortlek[x, y] = true;
+                        kort--;
+                    }
+
                 }
             }
         }
     }
-}
