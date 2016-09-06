@@ -23,9 +23,12 @@ namespace Kortlek
             int kort = 52;
             while (kort > 0)
             {
+
                 int y = roll.Next(0, 13);
                 int x = roll.Next(0, 4);
-                if (kortlek[x, y] != true)
+
+
+                if (kortlek[x, y] == false)
                 {
                     Console.WriteLine("tryck enter för att få ett kort");
                     Console.ReadLine();
@@ -67,12 +70,13 @@ namespace Kortlek
                                 break;
 
                             default:
-                                Console.WriteLine(x + 1);
+                                Console.WriteLine(y + 1);
                                 break;
                         }
 
                         kortlek[x, y] = true;
                         kort--;
+                    
                     }
 
                 }
