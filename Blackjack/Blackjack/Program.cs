@@ -13,6 +13,7 @@ namespace Blackjack
             //skapar kortleken
             bool[,] CardDeck = new bool[8, 13];
             int Card = 104;
+            int Points = 0;
             Random roll = new Random();
             Console.WriteLine("Vill du dra ett kort? J/N");
             char JN = Console.ReadKey().KeyChar;
@@ -32,35 +33,35 @@ namespace Blackjack
                     switch (x)
                 {
                     case 0:
-                        Console.WriteLine("ditt kort är hjärter");
+                        Console.Write("ditt kort är hjärter ");
                         break;
 
                     case 1:
-                        Console.WriteLine("ditt kort är hjärter");
+                        Console.Write("ditt kort är hjärter ");
                         break;
 
                     case 2:
-                        Console.WriteLine("ditt kort är spader");
+                        Console.Write("ditt kort är spader ");
                         break;
 
                     case 3:
-                        Console.WriteLine("ditt kort är spader");
+                        Console.Write("ditt kort är spader ");
                         break;
 
                     case 4:
-                        Console.WriteLine("ditt kort är ruter");
+                        Console.Write("ditt kort är ruter ");
                         break;
 
                     case 5:
-                        Console.WriteLine("ditt kort är ruter");
+                        Console.Write("ditt kort är ruter ");
                         break;
 
                     case 6:
-                        Console.WriteLine("ditt kort är klöver");
+                        Console.Write("ditt kort är klöver ");
                         break;
 
                     case 7:
-                        Console.WriteLine("ditt kort är klöver");
+                        Console.Write("ditt kort är klöver ");
                         break;
                  }
 
@@ -85,11 +86,15 @@ namespace Blackjack
                         default:
                             Console.WriteLine(y + 1);
                             break;
+                        
+                         
                     }
+                    Points += y+1;
                 CardDeck[x, y] = true;
                 Card--;
 
-                Console.WriteLine("Vill du dra ett till kort? J/N");
+                Console.WriteLine("du har {0} poäng", Points);
+                Console.WriteLine("\nVill du dra ett till kort? J/N");
                     JN = Console.ReadKey().KeyChar;
 
                 }
@@ -101,7 +106,7 @@ namespace Blackjack
 
             while (JN == 'n')
             {
-                Console.WriteLine("nope");
+                Console.WriteLine("du fick {0} poäng", Points);
                 break;
             }
 
