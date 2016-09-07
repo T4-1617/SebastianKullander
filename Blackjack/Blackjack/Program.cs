@@ -32,7 +32,7 @@ namespace Blackjack
 
                     if (CardDeck[x, y] == false)
                     {
-
+                        
                         switch (x)
                         {
                             case 0:
@@ -97,12 +97,22 @@ namespace Blackjack
                         Card--;
 
                         Console.WriteLine("du har {0} poäng", Points);
-                        Console.WriteLine("\nVill du dra ett till kort? J/N");
-                        JN = Console.ReadKey().KeyChar;
+                        
+                        
 
+                        if (Card == 0)
+                        {
+                            Console.WriteLine("\ntyvärr inga fler kort finns, starta om programmet om du vill spela igen!");
+                        }
+
+                        else
+                        {
+                            Console.WriteLine("\nVill du dra ett till kort? J/N");
+                            JN = Console.ReadKey().KeyChar;
+                        }
                     }
 
-
+                    
                 }
 
 
@@ -121,6 +131,12 @@ namespace Blackjack
                     Console.WriteLine("du fick {0} poäng", Points);
                     Console.WriteLine("Vill du köra igen?");
                     JN = Console.ReadKey().KeyChar;
+
+                    if (JN == 'n')
+                    {
+                        Game = false;
+                        JN = ' ';
+                    } 
                     Points = 0;
                     
                 }
