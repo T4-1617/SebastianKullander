@@ -11,12 +11,14 @@ namespace Blackjack
         static Random roll = new Random();
         static bool[,] CardDeck = new bool[16, 13];
         static int Card = 208;
+        static int playerScore = 0;
 
         static void Main(string[] args)
         {
             //skapar kortleken
             int Points = 0;
             int dealerPoints = 0;
+            
             Console.WriteLine("Vill du dra ett kort? J/N");
             char JN = Console.ReadKey().KeyChar;
             bool Game = true;
@@ -58,13 +60,17 @@ namespace Blackjack
                     if (Points == 21)
                     {
                         Console.WriteLine("Grattis du vann!");
+                        playerScore += 3;
+                        Console.WriteLine("du har {0} poäng", playerScore);
                     }
 
                     else if (Points > 21)
                     {
                         Console.WriteLine("Du sprack! bättre lycka nästa gång");
+                        playerScore -= 1;
+                        Console.WriteLine("du har {0} poäng", playerScore);
                     }
-                    Console.WriteLine("du fick {0} poäng", Points);
+                    
                     Console.WriteLine("Vill du köra igen?");
                     JN = Console.ReadKey().KeyChar;
 
@@ -74,7 +80,7 @@ namespace Blackjack
                         JN = ' ';
                     }
                     Points = 0;
-
+                    dealerPoints = 0;
                 }
 
             }
