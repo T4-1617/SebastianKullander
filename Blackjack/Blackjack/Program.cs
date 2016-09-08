@@ -12,6 +12,7 @@ namespace Blackjack
         static bool[,] CardDeck = new bool[16, 13];
         static int Card = 208;
         static int playerScore = 0;
+        static int y;
 
         static void Main(string[] args)
         {
@@ -28,10 +29,14 @@ namespace Blackjack
 
                 while (JN == 'j')
                 {
+                    if (Points == 0)
+                    { 
+                        // Dealer picks a card
+                        y = PickCard("Dealern");
+                        dealerPoints += y + 1;
 
-                    // Dealer picks a card
-                    int y = PickCard("Dealern");
-                    dealerPoints += y + 1;
+                    }
+                   
 
                     // Player picks a card
                     y = PickCard("Spelaren");
@@ -70,7 +75,47 @@ namespace Blackjack
                         playerScore -= 1;
                         Console.WriteLine("du har {0} poäng", playerScore);
                     }
-                    
+
+                    else if (dealerPoints < Points)
+                    {
+                        y = PickCard("Dealern");
+                        dealerPoints += y + 1;
+
+                        if (dealerPoints < Points)
+                        {
+                            y = PickCard("Dealern");
+                            dealerPoints += y + 1;
+
+                            if (dealerPoints < Points)
+                            {
+                                y = PickCard("Dealern");
+                                dealerPoints += y + 1;
+
+                            }
+                        }
+                    }
+
+                    else if (dealerPoints > Points)
+                    {
+                        Console.WriteLine("Dealern fick mer poäng, du förlorade!");
+                        playerScore -= 1;
+                        Console.WriteLine("du har {0} poäng", playerScore);
+                    }
+
+                    if (dealerPoints > 21)
+                    {
+                        Console.WriteLine("Deakern blev tjock, grattis du vann!");
+                        playerScore += 1;
+                        Console.WriteLine("du har {0} poäng", playerScore);
+                    }
+
+                    else if (dealerPoints > Points)
+                    {
+                        Console.WriteLine("Dealern fick mer poäng, du förlorade!");
+                        playerScore -= 1;
+                        Console.WriteLine("du har {0} poäng", playerScore);
+                    }
+
                     Console.WriteLine("Vill du köra igen?");
                     JN = Console.ReadKey().KeyChar;
 
