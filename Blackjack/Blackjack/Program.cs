@@ -16,66 +16,68 @@ namespace Blackjack
 
         static void Main(string[] args)
         {
-            //skapar kortleken
+            
             int Points = 0;
             int dealerPoints = 0;
-            
+            // prints text and reads which key you press
             Console.WriteLine("Vill du dra ett kort? J/N");
             char JN = Console.ReadKey().KeyChar;
             bool Game = true;
 
+            //when game is running
             while (Game == true)
             {
-
+                //when pressed J dealer recieves a card while points = 0 and player recieves a card
                 while (JN == 'j')
                 {
                     if (Points == 0)
-                    { 
+                    {
                         // Dealer picks a card
                         y = PickCard("Dealern");
                         dealerPoints += y + 1;
 
                     }
-                   
+
 
                     // Player picks a card
                     y = PickCard("Spelaren");
                     Points += y + 1;
 
-
+                    //prints the points for the dealer and player
                     Console.WriteLine("\ndealern har {0} poäng", dealerPoints);
                     Console.WriteLine("du har {0} poäng", Points);
 
 
-
+                    //if there is no more cards the game will stop
                     if (Card == 0)
                     {
                         Console.WriteLine("\ntyvärr inga fler kort finns, starta om programmet om du vill spela igen!");
                     }
-
+                    //if there is cards left, ask if player wanna draw a new card
                     else
                     {
                         Console.WriteLine("\nVill du dra ett till kort? J/N");
                         JN = Console.ReadKey().KeyChar;
                     }
                 }
-
+                //while user press N do this
                 while (JN == 'n')
                 {
+                    //if points = 21 print text and give player 3 points
                     if (Points == 21)
                     {
                         Console.WriteLine("Grattis du vann!");
                         playerScore += 3;
                         Console.WriteLine("du har {0} poäng", playerScore);
                     }
-
+                    //if points is more than 21 give player -1 points
                     else if (Points > 21)
                     {
                         Console.WriteLine("Du sprack! bättre lycka nästa gång");
                         playerScore -= 1;
                         Console.WriteLine("du har {0} poäng", playerScore);
                     }
-
+                    // if the dealers points is less than players, draw more cards
                     else if (dealerPoints < Points)
                     {
                         y = PickCard("Dealern");
@@ -94,14 +96,14 @@ namespace Blackjack
                             }
                         }
                     }
-
+                    //if dealer gets more points than player, it wins. give -1 points
                     else if (dealerPoints > Points)
                     {
                         Console.WriteLine("Dealern fick mer poäng, du förlorade!");
                         playerScore -= 1;
                         Console.WriteLine("du har {0} poäng", playerScore);
                     }
-
+                    //if dealer points is above 21 it loses, give player +1 points
                     if (dealerPoints > 21)
                     {
                         Console.WriteLine("Deakern blev tjock, grattis du vann!");
@@ -115,7 +117,7 @@ namespace Blackjack
                         playerScore -= 1;
                         Console.WriteLine("du har {0} poäng", playerScore);
                     }
-
+                    //asks player if the wanna play again, can press j for new card or n and game closes
                     Console.WriteLine("Vill du köra igen?");
                     JN = Console.ReadKey().KeyChar;
 
@@ -133,7 +135,7 @@ namespace Blackjack
 
 
         }
-
+        //roll the cards
         private static int PickCard(string target)
         {
             while (true)
@@ -141,7 +143,7 @@ namespace Blackjack
                 int x = roll.Next(0, 16);
                 int y = roll.Next(0, 13);
 
-
+               
                 if (CardDeck[x, y] == false)
                 {
 
