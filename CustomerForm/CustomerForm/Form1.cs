@@ -35,6 +35,7 @@ namespace CustomerForm
                 listBox1.Items.Add(item.fullName());
             }
 
+            label3.Text = string.Format("du har {0} kunder", MyCustomers.Count);
        
         }
 
