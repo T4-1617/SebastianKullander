@@ -10,11 +10,14 @@ namespace CustomerForm
     {
         public string firstName { get; set; }
         public string lastName { get; set; }
+        public int id { get; set; }
 
         public string fullName()
         {
             return string.Format("{0} {1}", firstName, lastName);   
         }
+
+        public bool Active { get; set; }
     }
 
 }
