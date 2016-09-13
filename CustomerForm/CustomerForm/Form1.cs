@@ -16,19 +16,19 @@ namespace CustomerForm
         int i = 100;
         //lista som innehåller kunderna
         List<Customer> MyCustomers = new List<Customer>();
-
+        
         public Form1()
         {
             InitializeComponent();
         }
-
+       
         private void button1_Click(object sender, EventArgs e)
         {
             Customer c = new Customer();
             c.id = i;
             c.firstName = textBox1.Text;
             c.lastName = textBox2.Text;
-            c.Active = true;
+            c.Active = checkBox1.Checked;
             //lägger till kunderna
             MyCustomers.Add(c);
             //clearar list boxen
@@ -46,7 +46,7 @@ namespace CustomerForm
             }
             else
             {
-                status = "Unactive";
+                status = "Inactive";
             }
             //när man trycker på knappen så visar den hur många kunder man har varje gång
             label3.Text = string.Format("du har {0} kunder", MyCustomers.Count);
@@ -61,10 +61,15 @@ namespace CustomerForm
             Customer c = MyCustomers[listBox1.SelectedIndex];
             //skriver ut infon
             MessageBox.Show(string.Format("ID: {0}\nFirst name: {1}\nLast name: {2}\nStatus: {3}",
-                c.id, c.firstName,c.lastName, status ));
+                c.id, c.firstName,c.lastName, c.Active ));
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }
