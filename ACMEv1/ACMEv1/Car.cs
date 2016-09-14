@@ -13,5 +13,6 @@ namespace ACMEv1
         public string HP { get; set; }
         public string Trunksize { get; set; }
         public string Seats { get; set; }
+        public string Reg { get; set; }
     }
 }
