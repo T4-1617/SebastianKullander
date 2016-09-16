@@ -36,6 +36,7 @@ namespace ACME_cars
             panel1.Visible = true;
             panel2.Visible = false;
             panel3.Visible = false;
+            
 
             CarsAvailable = 0;
 
@@ -54,6 +55,7 @@ namespace ACME_cars
 
             label1.Text = string.Format("We have {0} cars available", CarsAvailable);
            
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -62,6 +64,7 @@ namespace ACME_cars
             panel1.Visible = false;
             panel2.Visible = true;
             panel3.Visible = false;
+            panel4.Visible = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -74,6 +77,7 @@ namespace ACME_cars
             panel1.Visible = false;
             panel2.Visible = false;
             panel3.Visible = true;
+            panel4.Visible = false;
 
             listBox2.Items.Clear();
 
@@ -97,6 +101,7 @@ namespace ACME_cars
                 lblMake.Text = x.Make;
                 lblModel.Text = x.Model;
                 lblColor.Text = x.Color;
+                panel4.Visible = false;
             }
             
         }
@@ -105,6 +110,7 @@ namespace ACME_cars
         {
             Car x = (Car)listBox1.SelectedItem;
             x.Rented = true;
+            x.CustomerName = textBox4.Text;
             listBox1.Items.Clear();
 
             foreach (Car Item in Cars)
@@ -137,6 +143,33 @@ namespace ACME_cars
                 }
             }
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            listBox3.Items.Clear();
+            panel1.Visible = false;
+            panel2.Visible = false;
+            panel3.Visible = false;
+            panel4.Visible = true;
+
+            foreach (Car Item in Cars)
+            {
+                if (Item.Rented)
+                {
+                    listBox3.Items.Add(string.Format("{0} has rented a {1} {2} {3}", Item.CustomerName, Item.Color, Item.Make, Item.Model));
+                }
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ namespace ACME_cars
         public string Model { get; set; }
         public string Color { get; set; }
         public bool Rented { get; set; }
+        public string CustomerName { get; set; }
 
         public string MakeModel
         {
