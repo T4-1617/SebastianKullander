@@ -14,6 +14,7 @@ namespace ACME_cars
     {
 
         System.Collections.ArrayList Cars;
+        int CarsAvailable;
 
         public Form1()
         {
@@ -26,7 +27,8 @@ namespace ACME_cars
             Cars.Add(new Car() { Make = "Audi", Model = "A6", Color = "black", Rented = false });
             Cars.Add(new Car() { Make = "Mercedes benz", Model = "AMG", Color = "red", Rented = false });
 
-           
+            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,6 +36,8 @@ namespace ACME_cars
             panel1.Visible = true;
             panel2.Visible = false;
             panel3.Visible = false;
+
+            CarsAvailable = 0;
 
             listBox1.Items.Clear();
 
@@ -43,8 +47,12 @@ namespace ACME_cars
                 {
                     listBox1.Items.Add(item);
                     listBox1.DisplayMember = "MakeModel";
+
+                    CarsAvailable++;
                 }
             }
+
+            label1.Text = string.Format("We have {0} cars available", CarsAvailable);
            
         }
 
@@ -66,15 +74,31 @@ namespace ACME_cars
             panel1.Visible = false;
             panel2.Visible = false;
             panel3.Visible = true;
+
+            listBox2.Items.Clear();
+
+            foreach (Car item in Cars)
+            {
+                if (item.Rented)
+                {
+                    listBox2.Items.Add(item);
+                    listBox2.DisplayMember = "MakeModel";
+                }
+
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             Car x = (Car)listBox1.SelectedItem;
-            panel1.Visible = true;
-            lblMake.Text = x.Make;
-            lblModel.Text = x.Model;
-            lblColor.Text = x.Color;
+            if (x != null)
+            {
+                panel1.Visible = true;
+                lblMake.Text = x.Make;
+                lblModel.Text = x.Model;
+                lblColor.Text = x.Color;
+            }
+            
         }
 
         private void btnRent_Click(object sender, EventArgs e)
@@ -91,6 +115,28 @@ namespace ACME_cars
                     listBox1.DisplayMember = "MakeModel";
                 }
             }
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnReturnRentedCar_Click(object sender, EventArgs e)
+        {
+            Car x = (Car)listBox2.SelectedItem;
+            x.Rented = false;
+            listBox2.Items.Clear();
+
+            foreach (Car Item in Cars)
+            {
+                if (Item.Rented)
+                {
+                    listBox2.Items.Add(Item);
+                    listBox2.DisplayMember = "MakeModel";
+                }
+            }
+
         }
     }
 }
