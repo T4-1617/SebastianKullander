@@ -37,8 +37,16 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -53,6 +61,10 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Kund",
+            "Anställd",
+            "Leverantör"});
             this.comboBox1.Location = new System.Drawing.Point(154, 33);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
@@ -71,7 +83,7 @@
             // 
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Location = new System.Drawing.Point(343, 444);
+            this.panel1.Location = new System.Drawing.Point(337, 100);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(259, 137);
             this.panel1.TabIndex = 3;
@@ -121,11 +133,67 @@
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.button6);
+            this.panel3.Controls.Add(this.button5);
+            this.panel3.Location = new System.Drawing.Point(646, 121);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 100);
+            this.panel3.TabIndex = 4;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.button8);
+            this.panel4.Controls.Add(this.button7);
+            this.panel4.Location = new System.Drawing.Point(396, 453);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(200, 100);
+            this.panel4.TabIndex = 0;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(13, 48);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 0;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(110, 57);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 1;
+            this.button6.Text = "button6";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(8, 46);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 2;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(111, 46);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 3;
+            this.button8.Text = "button8";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1056, 739);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.listBox1);
@@ -135,6 +203,8 @@
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,6 +221,12 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
     }
 }
 
