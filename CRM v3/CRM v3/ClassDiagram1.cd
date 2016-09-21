@@ -3,19 +3,19 @@
   <Class Name="CRM_v3.People">
     <Position X="7.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <HashCode>AAAAAEAAAAAAAAAEAAAAQAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>People.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CRM_v3.Customer">
     <Position X="4.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>People.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="CRM_v3.Empoyee">
-    <Position X="7.25" Y="4" Width="1.5" />
+    <Position X="7.25" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>People.cs</FileName>
@@ -24,7 +24,7 @@
   <Class Name="CRM_v3.Supplier">
     <Position X="9.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>People.cs</FileName>
     </TypeIdentifier>
   </Class>
