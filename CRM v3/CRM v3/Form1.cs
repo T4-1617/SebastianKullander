@@ -31,10 +31,7 @@ namespace CRM_v3
             People.Add(new Supplier() { FirstName = "Daniel", LastName = "Lundgren", Company = "Hellgren-linander", PhoneNumber = "123123123"  });
             People.Add(new Supplier() { FirstName = "Stephan", LastName = "MountainStick", Company = "KooraBilAB", PhoneNumber = "123123123" });
 
-            foreach (var Customer in People)
-            {
-                listBox1.Items.Add(Customer);
-            }
+            ListPeople();
 
             pnlCustomer.Visible = false;
             pnlEmployee.Visible = false;
@@ -80,10 +77,7 @@ namespace CRM_v3
         {
             People.Add(new Customer() { FirstName = txtFirstName.Text, LastName = txtLastName.Text, CustomerID = random.Next(1000, 10000), PhoneNumber = txtPhoneNumber.Text });
             listBox1.Items.Clear();
-            foreach (var Customer in People)
-            {
-                listBox1.Items.Add(Customer);
-            }
+            ListPeople();
 
             txtFirstName.Clear();
             txtLastName.Clear();
@@ -99,10 +93,7 @@ namespace CRM_v3
         {
             People.Add(new Employee() { FirstName = txtEmpFirstName.Text, LastName = txtEmpLastName.Text, EmployeeID = random.Next(1000, 10000), Title = txtEmpTitle.Text, PhoneNumber = txtEmpPhoneNumber.Text });
             listBox1.Items.Clear();
-            foreach (var Customer in People)
-            {
-                listBox1.Items.Add(Customer);
-            }
+            ListPeople();
 
             txtEmpFirstName.Clear();
             txtEmpLastName.Clear();
@@ -113,10 +104,7 @@ namespace CRM_v3
         {
             People.Add(new Supplier() { FirstName = txtSuppFirstName.Text, LastName = txtSuppLastName.Text, Company = txtSuppCompany.Text, PhoneNumber = txtSuppPhoneNumber.Text });
             listBox1.Items.Clear();
-            foreach (var Customer in People)
-            {
-                listBox1.Items.Add(Customer);
-            }
+            ListPeople();
 
             txtSuppFirstName.Clear();
             txtSuppLastName.Clear();
@@ -198,10 +186,7 @@ namespace CRM_v3
                         break;
                 }
                 listBox1.Items.Clear();
-                foreach (People item in People)
-                {
-                    listBox1.Items.Add(item);
-                }
+                ListPeople();
             }
         }
 
@@ -251,7 +236,7 @@ namespace CRM_v3
 
             listBox1.Items.Add("Customers:");
 
-            foreach (Customer item in People)
+            foreach (var item in People)
             {
                 if (item is Customer)
                 {
@@ -279,8 +264,8 @@ namespace CRM_v3
             {
                 if (item is Supplier)
                 {
-                    list   .Items.Add(item);
-                    CountSuppliers++;
+                    listBox1.Items.Add(item);
+                   
                 }
             }
             
