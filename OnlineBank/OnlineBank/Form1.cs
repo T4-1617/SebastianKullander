@@ -23,7 +23,7 @@ namespace OnlineBank
 
             _customers = new System.Collections.ArrayList();
             Transactions = new System.Collections.ArrayList();
-
+            //hård kodade customers o accounts
             Customer c = new Customer() { FirstName = "kalle", LastName = "anka", Id = 1};
             c.CreateAccount(1200, "kontot");
             _customers.Add(c);
@@ -43,9 +43,9 @@ namespace OnlineBank
         private void lbxCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             Customer c = (Customer)lbxCustomer.SelectedItem;
-            DisplayAccounts(c);
+            DisplayAccounts(c);//anropar metoden nedan
         }
-
+        //metod som som clearar listboxen, visar kontots namn och lägger in varje konto i listan
         private void DisplayAccounts(Customer c)
         {
             lbxAccount.Items.Clear();
@@ -57,31 +57,33 @@ namespace OnlineBank
         }
 
         private void btnDepositAdd_Click(object sender, EventArgs e)
-        {
+        {   
+            //om textboxen inte är tom och om listboxen är iklickad gör det nedan 
             if (txbDepositMoney.Text != string.Empty)
             {
                 if (lbxAccount.SelectedItem != null)
                 {
-                    Account a = (Account)lbxAccount.SelectedItem;
+                    Account a = (Account)lbxAccount.SelectedItem;//håller koll vilka man klickat på
                     Customer c = (Customer)lbxCustomer.SelectedItem;
-                    a.Deposit(decimal.Parse(txbDepositMoney.Text));
-                    lblAccountBalance.Text = string.Format("{0}", a.Balance);
+                    a.Deposit(decimal.Parse(txbDepositMoney.Text));//lägger in pengarna
+                    lblAccountBalance.Text = string.Format("{0}", a.Balance);//ändrar labeln i saldo
                     Transactions.Add(new Transaction() { CustomerName = c.FirstName, AccountName = a.AccountName,
-                    TransactionAmount = decimal.Parse(txbDepositMoney.Text), TransactionType = "satt in", TransactionWord = "i" });
-                    TogglePanels(false, false, false, false, true, false);
-                    ClearTextBoxes();
+                    TransactionAmount = decimal.Parse(txbDepositMoney.Text), TransactionType = "satt in", TransactionWord = "i" });//lägger till nu transaction och skriver ut det i listboxen
+                    TogglePanels(false, false, false, false, true, false);//togglar panels till saldo
+                    ClearTextBoxes();//metod
                 }
 
             }
 
             else
             {
-                MessageBox.Show("Var vänlig och ange ett värde!");
+                MessageBox.Show("Var vänlig och ange ett värde!");//om inte allt är uppfyllt visa medellande
             }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //beroende på vad man väljer i comboboxen så toggla panels
             switch (comboBox1.SelectedIndex)
             {
                 case 0:
@@ -100,7 +102,7 @@ namespace OnlineBank
                     break;
             }
         }
-
+        //metod som väljer vilka knappar som ska funka
         private void EnableButtons(bool EnableButtonNewCustomer, bool EnableButtonOpenAccount, bool EnableButtonDepositMoney, 
         bool EnableButtonWithdrawMoney, bool EnableButtonAccountBalance, bool EnableButtonTransactions)
         {
@@ -112,7 +114,7 @@ namespace OnlineBank
             btnTransactions.Enabled = EnableButtonTransactions;
             
         }
-
+        //metod för att toggla panels
         private void TogglePanels(bool pnlToggleNewCustomer, bool pnlToggleOpenAccount, bool pnlToggleDepositMoney,
         bool pnlToggleWithdrawMoney, bool pnlToggleAccountBlance, bool pnlToggleTransactions)
         {
@@ -123,7 +125,7 @@ namespace OnlineBank
             pnlAccountBalance.Visible = pnlToggleAccountBlance;
             pnlTransactions.Visible = pnlToggleTransactions;
         }
-
+        //metod för att lägga in kunder i listboxen
         private void DisplayCustomer()
         {
             lbxCustomer.Items.Clear();
@@ -133,7 +135,7 @@ namespace OnlineBank
             }
 
         }
-
+        //metod för att cleara textboxar
         private void ClearTextBoxes()
         {
             txbCustomerFirstName.Clear();
@@ -146,33 +148,39 @@ namespace OnlineBank
 
         private void btnNewCustomer_Click(object sender, EventArgs e)
         {
+            //togglar ny kund panelen
             TogglePanels(true, false, false, false, false, false);
         }
 
         private void btnOpenAccount_Click(object sender, EventArgs e)
         {
+            //togglar öppna konto panelen
             TogglePanels(false, true, false, false, false, false);
         }
 
         private void btnDepositMoney_Click(object sender, EventArgs e)
         {
+            //togglar sätt in panelen
             TogglePanels(false, false, true, false, false, false);
         }
 
         private void btnWithdrawMoney_Click(object sender, EventArgs e)
         {
+            //togglar ta ut panelen
             TogglePanels(false, false, false, true, false, false);
         }
 
         private void btnAccountBlanace_Click(object sender, EventArgs e)
         {
+            //togglar saldo panelen
             TogglePanels(false, false, false, false, true, false);
         }
 
         private void btnTransactions_Click(object sender, EventArgs e)
         {
+            //togglar transactions panelen
             TogglePanels(false, false, false, false, false, true);
-            lbxTransactions.Items.Clear();
+            lbxTransactions.Items.Clear();//clearar listan och lägger in i listboxen
             foreach (Transaction item in Transactions)
             {
                 lbxTransactions.Items.Add(item);
@@ -182,15 +190,18 @@ namespace OnlineBank
 
         private void btnCustomerAdd_Click(object sender, EventArgs e)
         {
+            //om alla textboxar är ifyllda så gör det nedan
             if (txbCustomerFirstName.Text != string.Empty || txbCustomerLastName.Text != string.Empty || txbCustomerID.Text != string.Empty)
             {
+                //tar emot värdena och sparar dem
                 _customers.Add(new Customer() { FirstName = txbCustomerFirstName.Text, LastName = txbCustomerLastName.Text, Id = long.Parse(txbCustomerID.Text) });
-                DisplayCustomer();
-                ClearTextBoxes();
+                DisplayCustomer();//anropar metod som lägger in customers i listboxen
+                ClearTextBoxes();//clearar textboxarna
             }
 
             else
             {
+                //om någon textbox är tom visa medellande
                 MessageBox.Show("Var vänlig och fyll i formuläret!");
             }
 
@@ -198,6 +209,7 @@ namespace OnlineBank
 
         private void lbxAccount_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             if (lbxAccount.SelectedItem != null)
             {
                 Account a = (Account)lbxAccount.SelectedItem;
@@ -208,27 +220,18 @@ namespace OnlineBank
 
         private void btnAccountAdd_Click(object sender, EventArgs e)
         {
+            //om båda textboxarna är ifyllda
             if (txbAccountName.Text != string.Empty || txbFirstDeposit.Text != string.Empty)
             {
                 Customer c = (Customer)lbxCustomer.SelectedItem;
-                if (lbxCustomer.SelectedItem != null)
+                if (lbxCustomer.SelectedItem != null)//om item ilistboxen är iklickad gör nedan
                 {
                     c.CreateAccount(decimal.Parse(txbFirstDeposit.Text), txbAccountName.Text);
                     ClearTextBoxes();
                     DisplayAccounts(c);
                 }
-
-                else
-                {
-                    MessageBox.Show("Välj en kund!");
-                }
-
-                if (lbxCustomer.SelectedItem != null && c.Error == true)
-                {
-                    MessageBox.Show("Sätt in 1000 kronor minst för att skapa ett konto!");
-                }
             }
-
+            //annars visa medellande
             else
             {
                 MessageBox.Show("fyll i formuläret!");
@@ -237,6 +240,7 @@ namespace OnlineBank
 
         private void btnWithdrawAdd_Click(object sender, EventArgs e)
         {
+            
             if (txbWithdrawMoney.Text != string.Empty)
             {
                 Account a = (Account)lbxAccount.SelectedItem;
