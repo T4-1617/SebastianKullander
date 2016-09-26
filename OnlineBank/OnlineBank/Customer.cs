@@ -53,6 +53,21 @@ namespace OnlineBank
         }
     }
 
+    public class Transaction
+    {
+        public string CustomerName { get; set; }
+        public string AccountName { get; set; }
+        public decimal TransactionAmount { get; set; }
+        public string TransactionType { get; set; }
+        public string TransactionWord { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0} har {1} {2} kr {3} kontot \"{4}\" ", CustomerName, TransactionType, TransactionAmount, TransactionWord, AccountName);
+        }
+
+    }
+
     public class Account
     {
         private decimal balance;

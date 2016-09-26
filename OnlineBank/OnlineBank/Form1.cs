@@ -13,13 +13,16 @@ namespace OnlineBank
     public partial class Form1 : Form
     {
         private System.Collections.ArrayList _customers;
-        
+        private System.Collections.ArrayList Transactions;
+
+
 
         public Form1()
         {
             InitializeComponent();
 
             _customers = new System.Collections.ArrayList();
+            Transactions = new System.Collections.ArrayList();
 
             Customer c = new Customer() { FirstName = "kalle", LastName = "anka", Id = 1};
             c.CreateAccount(1200, "kontot");
@@ -55,7 +58,26 @@ namespace OnlineBank
 
         private void btnDepositAdd_Click(object sender, EventArgs e)
         {
+            if (txbDepositMoney.Text != string.Empty)
+            {
+                if (lbxAccount.SelectedItem != null)
+                {
+                    Account a = (Account)lbxAccount.SelectedItem;
+                    Customer c = (Customer)lbxCustomer.SelectedItem;
+                    a.Deposit(decimal.Parse(txbDepositMoney.Text));
+                    lblAccountBalance.Text = string.Format("{0}", a.Balance);
+                    Transactions.Add(new Transaction() { CustomerName = c.FirstName, AccountName = a.AccountName,
+                    TransactionAmount = decimal.Parse(txbDepositMoney.Text), TransactionType = "satt in", TransactionWord = "i" });
+                    TogglePanels(false, false, false, false, true, false);
+                    ClearTextBoxes();
+                }
 
+            }
+
+            else
+            {
+                MessageBox.Show("Var vänlig och ange ett värde!");
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -150,7 +172,12 @@ namespace OnlineBank
         private void btnTransactions_Click(object sender, EventArgs e)
         {
             TogglePanels(false, false, false, false, false, true);
-           
+            lbxTransactions.Items.Clear();
+            foreach (Transaction item in Transactions)
+            {
+                lbxTransactions.Items.Add(item);
+            }
+
         }
 
         private void btnCustomerAdd_Click(object sender, EventArgs e)
@@ -206,6 +233,35 @@ namespace OnlineBank
             {
                 MessageBox.Show("fyll i formuläret!");
             }
+        }
+
+        private void btnWithdrawAdd_Click(object sender, EventArgs e)
+        {
+            if (txbWithdrawMoney.Text != string.Empty)
+            {
+                Account a = (Account)lbxAccount.SelectedItem;
+                Customer c = (Customer)lbxCustomer.SelectedItem;
+                if (lbxAccount.SelectedItem != null)
+                {
+                    a.Withdraw(decimal.Parse(txbWithdrawMoney.Text));
+                    lblAccountBalance.Text = string.Format("{0}", a.Balance);
+                    ClearTextBoxes();
+                    TogglePanels(false, false, false, false, true, false);
+
+                    Transactions.Add(new Transaction() { CustomerName = c.FirstName, AccountName = a.AccountName,
+                    TransactionAmount = decimal.Parse(txbWithdrawMoney.Text), TransactionType = "tagit ur", TransactionWord = "ur" });
+                }
+            }
+        }
+
+        private void btnCustomerCancel_Click(object sender, EventArgs e)
+        {
+            TogglePanels(false, false, false, false, false, false);
+        }
+
+        private void btnAccountCancel_Click(object sender, EventArgs e)
+        {
+            TogglePanels(false, false, false, false, false, false);
         }
     }
 }

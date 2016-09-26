@@ -60,9 +60,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txbWithdrawMoney = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnDepositCancel = new System.Windows.Forms.Button();
             this.btnDepositAdd = new System.Windows.Forms.Button();
-            this.btnWithdrawCancel = new System.Windows.Forms.Button();
             this.btnWithdrawAdd = new System.Windows.Forms.Button();
             this.label2000 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -175,6 +173,7 @@
             this.pnlNewCustomer.Name = "pnlNewCustomer";
             this.pnlNewCustomer.Size = new System.Drawing.Size(216, 162);
             this.pnlNewCustomer.TabIndex = 14;
+            this.pnlNewCustomer.Visible = false;
             // 
             // pnlOpenAccount
             // 
@@ -188,10 +187,10 @@
             this.pnlOpenAccount.Name = "pnlOpenAccount";
             this.pnlOpenAccount.Size = new System.Drawing.Size(216, 162);
             this.pnlOpenAccount.TabIndex = 15;
+            this.pnlOpenAccount.Visible = false;
             // 
             // pnlDepositMoney
             // 
-            this.pnlDepositMoney.Controls.Add(this.btnDepositCancel);
             this.pnlDepositMoney.Controls.Add(this.txbDepositMoney);
             this.pnlDepositMoney.Controls.Add(this.btnDepositAdd);
             this.pnlDepositMoney.Controls.Add(this.label7);
@@ -199,10 +198,10 @@
             this.pnlDepositMoney.Name = "pnlDepositMoney";
             this.pnlDepositMoney.Size = new System.Drawing.Size(216, 162);
             this.pnlDepositMoney.TabIndex = 15;
+            this.pnlDepositMoney.Visible = false;
             // 
             // pnlWithdrawMoney
             // 
-            this.pnlWithdrawMoney.Controls.Add(this.btnWithdrawCancel);
             this.pnlWithdrawMoney.Controls.Add(this.txbWithdrawMoney);
             this.pnlWithdrawMoney.Controls.Add(this.btnWithdrawAdd);
             this.pnlWithdrawMoney.Controls.Add(this.label8);
@@ -210,6 +209,7 @@
             this.pnlWithdrawMoney.Name = "pnlWithdrawMoney";
             this.pnlWithdrawMoney.Size = new System.Drawing.Size(216, 162);
             this.pnlWithdrawMoney.TabIndex = 15;
+            this.pnlWithdrawMoney.Visible = false;
             // 
             // pnlAccountBalance
             // 
@@ -219,6 +219,7 @@
             this.pnlAccountBalance.Name = "pnlAccountBalance";
             this.pnlAccountBalance.Size = new System.Drawing.Size(216, 162);
             this.pnlAccountBalance.TabIndex = 15;
+            this.pnlAccountBalance.Visible = false;
             // 
             // pnlTransactions
             // 
@@ -228,6 +229,7 @@
             this.pnlTransactions.Name = "pnlTransactions";
             this.pnlTransactions.Size = new System.Drawing.Size(216, 162);
             this.pnlTransactions.TabIndex = 15;
+            this.pnlTransactions.Visible = false;
             // 
             // label2
             // 
@@ -295,6 +297,7 @@
             this.btnCustomerCancel.TabIndex = 23;
             this.btnCustomerCancel.Text = "Avbryt";
             this.btnCustomerCancel.UseVisualStyleBackColor = true;
+            this.btnCustomerCancel.Click += new System.EventHandler(this.btnCustomerCancel_Click);
             // 
             // label5
             // 
@@ -346,6 +349,7 @@
             this.btnAccountCancel.TabIndex = 24;
             this.btnAccountCancel.Text = "Avbryt";
             this.btnAccountCancel.UseVisualStyleBackColor = true;
+            this.btnAccountCancel.Click += new System.EventHandler(this.btnAccountCancel_Click);
             // 
             // txbDepositMoney
             // 
@@ -379,33 +383,15 @@
             this.label8.TabIndex = 26;
             this.label8.Text = "Ta ut belopp:";
             // 
-            // btnDepositCancel
-            // 
-            this.btnDepositCancel.Location = new System.Drawing.Point(126, 121);
-            this.btnDepositCancel.Name = "btnDepositCancel";
-            this.btnDepositCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnDepositCancel.TabIndex = 25;
-            this.btnDepositCancel.Text = "Avbryt";
-            this.btnDepositCancel.UseVisualStyleBackColor = true;
-            // 
             // btnDepositAdd
             // 
             this.btnDepositAdd.Location = new System.Drawing.Point(16, 121);
             this.btnDepositAdd.Name = "btnDepositAdd";
             this.btnDepositAdd.Size = new System.Drawing.Size(75, 23);
             this.btnDepositAdd.TabIndex = 24;
-            this.btnDepositAdd.Text = "Lägg till";
+            this.btnDepositAdd.Text = "Sätt in";
             this.btnDepositAdd.UseVisualStyleBackColor = true;
             this.btnDepositAdd.Click += new System.EventHandler(this.btnDepositAdd_Click);
-            // 
-            // btnWithdrawCancel
-            // 
-            this.btnWithdrawCancel.Location = new System.Drawing.Point(125, 121);
-            this.btnWithdrawCancel.Name = "btnWithdrawCancel";
-            this.btnWithdrawCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnWithdrawCancel.TabIndex = 27;
-            this.btnWithdrawCancel.Text = "Avbryt";
-            this.btnWithdrawCancel.UseVisualStyleBackColor = true;
             // 
             // btnWithdrawAdd
             // 
@@ -413,8 +399,9 @@
             this.btnWithdrawAdd.Name = "btnWithdrawAdd";
             this.btnWithdrawAdd.Size = new System.Drawing.Size(75, 23);
             this.btnWithdrawAdd.TabIndex = 26;
-            this.btnWithdrawAdd.Text = "Lägg till";
+            this.btnWithdrawAdd.Text = "Ta ut";
             this.btnWithdrawAdd.UseVisualStyleBackColor = true;
+            this.btnWithdrawAdd.Click += new System.EventHandler(this.btnWithdrawAdd_Click);
             // 
             // label2000
             // 
@@ -556,12 +543,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel pnlDepositMoney;
-        private System.Windows.Forms.Button btnDepositCancel;
         private System.Windows.Forms.TextBox txbDepositMoney;
         private System.Windows.Forms.Button btnDepositAdd;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel pnlWithdrawMoney;
-        private System.Windows.Forms.Button btnWithdrawCancel;
         private System.Windows.Forms.TextBox txbWithdrawMoney;
         private System.Windows.Forms.Button btnWithdrawAdd;
         private System.Windows.Forms.Label label8;
