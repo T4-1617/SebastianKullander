@@ -53,6 +53,83 @@ namespace OnlineBank
             }
         }
 
+        private void btnDepositAdd_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0:
+                    EnableButtons(true, true, true, true, true, false);
+                    lbxCustomer.Enabled = true;
+                    break;
+
+                case 1:
+                    EnableButtons(true, true, false, false, false, true);
+                    lbxCustomer.Enabled = true;
+                    break;
+
+                default:
+                    EnableButtons(false, false, false, false, false, false);
+                    lbxCustomer.Enabled = false;
+                    break;
+            }
+        }
+
+        private void EnableButtons(bool EnableButtonNewCustomer, bool EnableButtonOpenAccount, bool EnableButtonDepositMoney, 
+        bool EnableButtonWithdrawMoney, bool EnableButtonAccountBalance, bool EnableButtonTransactions)
+        {
+            btnNewCustomer.Enabled = EnableButtonNewCustomer;
+            btnOpenAccount.Enabled = EnableButtonOpenAccount;
+            btnDepositMoney.Enabled = EnableButtonDepositMoney;
+            btnWithdrawMoney.Enabled = EnableButtonWithdrawMoney;
+            btnAccountBlanace.Enabled = EnableButtonAccountBalance;
+            btnTransactions.Enabled = EnableButtonTransactions;
+            
+        }
+
+        private void TogglePanels(bool pnlToggleNewCustomer, bool pnlToggleOpenAccount, bool pnlToggleDepositMoney,
+        bool pnlToggleWithdrawMoney, bool pnlToggleAccountBlance, bool pnlToggleTransactions)
+        {
+            pnlNewCustomer.Visible = pnlToggleNewCustomer;
+            pnlOpenAccount.Visible = pnlToggleOpenAccount;
+            pnlDepositMoney.Visible = pnlToggleDepositMoney;
+            pnlWithdrawMoney.Visible = pnlToggleWithdrawMoney;
+            pnlAccountBalance.Visible = pnlToggleAccountBlance;
+            pnlTransactions.Visible = pnlToggleTransactions;
+        }
+
+        private void btnNewCustomer_Click(object sender, EventArgs e)
+        {
+            TogglePanels(true, false, false, false, false, false);
+        }
+
+        private void btnOpenAccount_Click(object sender, EventArgs e)
+        {
+            TogglePanels(false, true, false, false, false, false);
+        }
+
+        private void btnDepositMoney_Click(object sender, EventArgs e)
+        {
+            TogglePanels(false, false, true, false, false, false);
+        }
+
+        private void btnWithdrawMoney_Click(object sender, EventArgs e)
+        {
+            TogglePanels(false, false, false, true, false, false);
+        }
+
+        private void btnAccountBlanace_Click(object sender, EventArgs e)
+        {
+            TogglePanels(false, false, false, false, true, false);
+        }
+
+        private void btnTransactions_Click(object sender, EventArgs e)
+        {
+            TogglePanels(false, false, false, false, false, true);
+        }
     }
 }

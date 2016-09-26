@@ -87,6 +87,7 @@
             this.btnTransactions.TabIndex = 11;
             this.btnTransactions.Text = "Transaktioner";
             this.btnTransactions.UseVisualStyleBackColor = true;
+            this.btnTransactions.Click += new System.EventHandler(this.btnTransactions_Click);
             // 
             // btnAccountBlanace
             // 
@@ -96,6 +97,7 @@
             this.btnAccountBlanace.TabIndex = 10;
             this.btnAccountBlanace.Text = "Saldo";
             this.btnAccountBlanace.UseVisualStyleBackColor = true;
+            this.btnAccountBlanace.Click += new System.EventHandler(this.btnAccountBlanace_Click);
             // 
             // btnWithdrawMoney
             // 
@@ -105,6 +107,7 @@
             this.btnWithdrawMoney.TabIndex = 9;
             this.btnWithdrawMoney.Text = "Ta ut";
             this.btnWithdrawMoney.UseVisualStyleBackColor = true;
+            this.btnWithdrawMoney.Click += new System.EventHandler(this.btnWithdrawMoney_Click);
             // 
             // btnDepositMoney
             // 
@@ -114,6 +117,7 @@
             this.btnDepositMoney.TabIndex = 8;
             this.btnDepositMoney.Text = "Sätt in";
             this.btnDepositMoney.UseVisualStyleBackColor = true;
+            this.btnDepositMoney.Click += new System.EventHandler(this.btnDepositMoney_Click);
             // 
             // btnOpenAccount
             // 
@@ -121,8 +125,9 @@
             this.btnOpenAccount.Name = "btnOpenAccount";
             this.btnOpenAccount.Size = new System.Drawing.Size(90, 84);
             this.btnOpenAccount.TabIndex = 7;
-            this.btnOpenAccount.Text = "Öpnna kund";
+            this.btnOpenAccount.Text = "Öppna konto";
             this.btnOpenAccount.UseVisualStyleBackColor = true;
+            this.btnOpenAccount.Click += new System.EventHandler(this.btnOpenAccount_Click);
             // 
             // btnNewCustomer
             // 
@@ -132,6 +137,7 @@
             this.btnNewCustomer.TabIndex = 6;
             this.btnNewCustomer.Text = "Ny kund";
             this.btnNewCustomer.UseVisualStyleBackColor = true;
+            this.btnNewCustomer.Click += new System.EventHandler(this.btnNewCustomer_Click);
             // 
             // label1
             // 
@@ -152,6 +158,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 13;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // pnlNewCustomer
             // 
@@ -385,6 +392,7 @@
             this.btnDepositAdd.TabIndex = 24;
             this.btnDepositAdd.Text = "Lägg till";
             this.btnDepositAdd.UseVisualStyleBackColor = true;
+            this.btnDepositAdd.Click += new System.EventHandler(this.btnDepositAdd_Click);
             // 
             // btnWithdrawCancel
             // 
