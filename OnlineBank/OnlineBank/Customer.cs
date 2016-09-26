@@ -15,8 +15,21 @@ namespace OnlineBank
             accounts = new System.Collections.ArrayList();
         }
 
-        public string Name { get; set; }
-        public int Id{ get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public long Id { get; set; }
+        private bool error;
+
+        public bool Error
+        {
+            get { return error; }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1}", FirstName, LastName);
+        }
+
 
         public Account GetAccount(int AccountIndex)
         {
@@ -28,11 +41,11 @@ namespace OnlineBank
             return accounts;
         }
 
-        public void CreateAccount(decimal InitialDeposit)
+        public void CreateAccount(decimal InitialDeposit, string AccName)
         {
             if (InitialDeposit >= 1000)
             {
-                Account a = new Account();
+                Account a = new Account() { AccountName = AccName };
                 a.Deposit(InitialDeposit);
 
                 accounts.Add(a);
@@ -43,6 +56,7 @@ namespace OnlineBank
     public class Account
     {
         private decimal balance;
+        public string AccountName { get; set; }
         public int Number { get; set; }
 
         public decimal Balance

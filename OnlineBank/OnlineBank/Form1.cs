@@ -21,13 +21,13 @@ namespace OnlineBank
 
             _customers = new System.Collections.ArrayList();
 
-            Customer c = new Customer() { Name = "Kalle" };
-            c.CreateAccount(1200);
+            Customer c = new Customer() { FirstName = "kalle", LastName = "anka", Id = 1};
+            c.CreateAccount(1200, "kontot");
             _customers.Add(c);
 
-            c = new Customer() { Name = "stevon" };
-            c.CreateAccount(5000);
-            c.CreateAccount(3200100);
+            c = new Customer() { FirstName = "stevon", LastName = "MountainBranch", Id = 2 };
+            c.CreateAccount(5000, "kontot");
+            c.CreateAccount(3200100, "kontot");
             _customers.Add(c);
 
             lbxCustomer.DisplayMember = "Name";
@@ -46,7 +46,7 @@ namespace OnlineBank
         private void DisplayAccounts(Customer c)
         {
             lbxAccount.Items.Clear();
-            lbxAccount.DisplayMember = "AccountInfo";
+            lbxAccount.DisplayMember = "AccountName";
             foreach (Account item in c.GetAccounts())
             {
                 lbxAccount.Items.Add(item);
@@ -102,6 +102,26 @@ namespace OnlineBank
             pnlTransactions.Visible = pnlToggleTransactions;
         }
 
+        private void DisplayCustomer()
+        {
+            lbxCustomer.Items.Clear();
+            foreach (Customer item in _customers)
+            {
+                lbxCustomer.Items.Add(item);
+            }
+
+        }
+
+        private void ClearTextBoxes()
+        {
+            txbCustomerFirstName.Clear();
+            txbCustomerLastName.Clear();
+            txbCustomerID.Clear();
+            txbFirstDeposit.Clear();
+            txbAccountName.Clear();
+            txbDepositMoney.Clear();
+        }
+
         private void btnNewCustomer_Click(object sender, EventArgs e)
         {
             TogglePanels(true, false, false, false, false, false);
@@ -130,6 +150,62 @@ namespace OnlineBank
         private void btnTransactions_Click(object sender, EventArgs e)
         {
             TogglePanels(false, false, false, false, false, true);
+           
+        }
+
+        private void btnCustomerAdd_Click(object sender, EventArgs e)
+        {
+            if (txbCustomerFirstName.Text != string.Empty || txbCustomerLastName.Text != string.Empty || txbCustomerID.Text != string.Empty)
+            {
+                _customers.Add(new Customer() { FirstName = txbCustomerFirstName.Text, LastName = txbCustomerLastName.Text, Id = long.Parse(txbCustomerID.Text) });
+                DisplayCustomer();
+                ClearTextBoxes();
+            }
+
+            else
+            {
+                MessageBox.Show("Var vänlig och fyll i formuläret!");
+            }
+
+        }
+
+        private void lbxAccount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbxAccount.SelectedItem != null)
+            {
+                Account a = (Account)lbxAccount.SelectedItem;
+                lblAccountBalance.Text = string.Format("{0}", a.Balance);
+            }
+
+        }
+
+        private void btnAccountAdd_Click(object sender, EventArgs e)
+        {
+            if (txbAccountName.Text != string.Empty || txbFirstDeposit.Text != string.Empty)
+            {
+                Customer c = (Customer)lbxCustomer.SelectedItem;
+                if (lbxCustomer.SelectedItem != null)
+                {
+                    c.CreateAccount(decimal.Parse(txbFirstDeposit.Text), txbAccountName.Text);
+                    ClearTextBoxes();
+                    DisplayAccounts(c);
+                }
+
+                else
+                {
+                    MessageBox.Show("Välj en kund!");
+                }
+
+                if (lbxCustomer.SelectedItem != null && c.Error == true)
+                {
+                    MessageBox.Show("Sätt in 1000 kronor minst för att skapa ett konto!");
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("fyll i formuläret!");
+            }
         }
     }
 }

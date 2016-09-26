@@ -64,13 +64,14 @@
             this.btnDepositAdd = new System.Windows.Forms.Button();
             this.btnWithdrawCancel = new System.Windows.Forms.Button();
             this.btnWithdrawAdd = new System.Windows.Forms.Button();
-            this.lblAccountBalance = new System.Windows.Forms.Label();
+            this.label2000 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lbxTransactions = new System.Windows.Forms.ListBox();
             this.lbxCustomer = new System.Windows.Forms.ListBox();
             this.lbxAccount = new System.Windows.Forms.ListBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.lblAccountBalance = new System.Windows.Forms.Label();
             this.pnlNewCustomer.SuspendLayout();
             this.pnlOpenAccount.SuspendLayout();
             this.pnlDepositMoney.SuspendLayout();
@@ -213,6 +214,7 @@
             // pnlAccountBalance
             // 
             this.pnlAccountBalance.Controls.Add(this.lblAccountBalance);
+            this.pnlAccountBalance.Controls.Add(this.label2000);
             this.pnlAccountBalance.Location = new System.Drawing.Point(223, 408);
             this.pnlAccountBalance.Name = "pnlAccountBalance";
             this.pnlAccountBalance.Size = new System.Drawing.Size(216, 162);
@@ -283,6 +285,7 @@
             this.btnCustomerAdd.TabIndex = 22;
             this.btnCustomerAdd.Text = "Lägg till";
             this.btnCustomerAdd.UseVisualStyleBackColor = true;
+            this.btnCustomerAdd.Click += new System.EventHandler(this.btnCustomerAdd_Click);
             // 
             // btnCustomerCancel
             // 
@@ -333,6 +336,7 @@
             this.btnAccountAdd.TabIndex = 24;
             this.btnAccountAdd.Text = "Lägg till";
             this.btnAccountAdd.UseVisualStyleBackColor = true;
+            this.btnAccountAdd.Click += new System.EventHandler(this.btnAccountAdd_Click);
             // 
             // btnAccountCancel
             // 
@@ -412,14 +416,14 @@
             this.btnWithdrawAdd.Text = "Lägg till";
             this.btnWithdrawAdd.UseVisualStyleBackColor = true;
             // 
-            // lblAccountBalance
+            // label2000
             // 
-            this.lblAccountBalance.AutoSize = true;
-            this.lblAccountBalance.Location = new System.Drawing.Point(18, 16);
-            this.lblAccountBalance.Name = "lblAccountBalance";
-            this.lblAccountBalance.Size = new System.Drawing.Size(66, 13);
-            this.lblAccountBalance.TabIndex = 26;
-            this.lblAccountBalance.Text = "Ditt saldo är:";
+            this.label2000.AutoSize = true;
+            this.label2000.Location = new System.Drawing.Point(18, 16);
+            this.label2000.Name = "label2000";
+            this.label2000.Size = new System.Drawing.Size(66, 13);
+            this.label2000.TabIndex = 26;
+            this.label2000.Text = "Ditt saldo är:";
             // 
             // label10
             // 
@@ -454,6 +458,7 @@
             this.lbxAccount.Name = "lbxAccount";
             this.lbxAccount.Size = new System.Drawing.Size(181, 108);
             this.lbxAccount.TabIndex = 30;
+            this.lbxAccount.SelectedIndexChanged += new System.EventHandler(this.lbxAccount_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -472,6 +477,15 @@
             this.label12.Size = new System.Drawing.Size(57, 13);
             this.label12.TabIndex = 28;
             this.label12.Text = "Välj konto:";
+            // 
+            // lblAccountBalance
+            // 
+            this.lblAccountBalance.AutoSize = true;
+            this.lblAccountBalance.Location = new System.Drawing.Point(90, 16);
+            this.lblAccountBalance.Name = "lblAccountBalance";
+            this.lblAccountBalance.Size = new System.Drawing.Size(35, 13);
+            this.lblAccountBalance.TabIndex = 27;
+            this.lblAccountBalance.Text = "label9";
             // 
             // Form1
             // 
@@ -552,7 +566,7 @@
         private System.Windows.Forms.Button btnWithdrawAdd;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel pnlAccountBalance;
-        private System.Windows.Forms.Label lblAccountBalance;
+        private System.Windows.Forms.Label label2000;
         private System.Windows.Forms.Panel pnlTransactions;
         private System.Windows.Forms.ListBox lbxTransactions;
         private System.Windows.Forms.Label label10;
@@ -560,6 +574,7 @@
         private System.Windows.Forms.ListBox lbxAccount;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblAccountBalance;
     }
 }
 
