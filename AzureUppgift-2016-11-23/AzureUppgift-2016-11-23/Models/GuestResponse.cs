@@ -14,7 +14,7 @@ namespace AzureUppgift_2016_11_23.Models
         [Required(ErrorMessage ="Ange din adress!")]
         public string Adress { get; set; }
 
-        [Required(ErrorMessage ="Ange ditt Telefon Nummer!")]
+        [Required(ErrorMessage ="Ange ditt Telefonnummer!")]
         public string Telephone { get; set; }
     }
 }
