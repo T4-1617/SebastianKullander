@@ -13,5 +13,11 @@ namespace AzureUppgift_2016_11_23.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ViewResult RSVP()
+        {
+
+        }
     }
 }
