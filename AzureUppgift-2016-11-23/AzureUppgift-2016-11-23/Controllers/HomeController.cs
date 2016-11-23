@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AzureUppgift_2016_11_23.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,10 +15,21 @@ namespace AzureUppgift_2016_11_23.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpGet]
         public ViewResult RSVP()
         {
+            return View();
+        }
 
+        [HttpPost]
+        public ViewResult RSVP(GuestResponse g)
+        {
+            if (ModelState.IsValid == true)
+            {
+                return View("Thanks", g);
+            }
+
+            return View();
         }
     }
 }
