@@ -8,12 +8,13 @@ namespace AzureUppgift_2016_11_23.Models
 {
     public class GuestResponse
     {
-        [Required]
+        [Required(ErrorMessage ="Ange ditt namn!")]
         public string Name { get; set; }
 
         [Required(ErrorMessage ="Ange din adress!")]
         public string Adress { get; set; }
 
+        [Required(ErrorMessage ="Ange ditt Telefon Nummer!")]
         public string Telephone { get; set; }
     }
 }
