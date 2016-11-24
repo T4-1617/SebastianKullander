@@ -1,0 +1,12 @@
+﻿@model List<AzureUppgift_2016_11_23.Models.GuestResponse>
+
+@{
+    ViewBag.Title = "Info";
+}
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.Name @item.Adress @item.Telephone</li>
+    }
+</ul>

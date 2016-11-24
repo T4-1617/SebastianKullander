@@ -11,6 +11,8 @@ namespace AzureUppgift_2016_11_23.Controllers
 {
     public class HomeController : Controller
     {
+
+
         private CloudStorageAccount storageAccount;
         private CloudTableClient tableClient;
         private CloudTable table;
@@ -40,7 +42,7 @@ namespace AzureUppgift_2016_11_23.Controllers
         {
             if (ModelState.IsValid == true)
             {
-                GuestResponse person = new GuestResponse(Guid.NewGuid().ToString()) { Name = g.Name, Telephone = g.Telephone, Adress = g.Adress};
+                GuestResponse person = new GuestResponse(Guid.NewGuid().ToString()) { Name = g.Name, Telephone = g.Telephone, Adress = g.Adress };
 
                 TableOperation insertOperation = TableOperation.Insert(person);
 
@@ -49,5 +51,31 @@ namespace AzureUppgift_2016_11_23.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        public ActionResult info()
+        {
+            return View(PrintInformation());
+        }
+
+        [NonAction]
+        public List<GuestResponse> PrintInformation()
+        {
+            List<GuestResponse> PeopleInformation = new List<GuestResponse>();
+       
+            // Construct the query operation for all customer entities where PartitionKey="Smith".
+            TableQuery<GuestResponse> query = new TableQuery<GuestResponse>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "KoraBil"));
+
+
+            foreach (GuestResponse item in table.ExecuteQuery(query))
+	        {
+                PeopleInformation.Add(item);
+	        }
+
+
+            return PeopleInformation;
+            
+        }
+
     }
 }
