@@ -65,7 +65,7 @@ h2 {
 }
 
 .aboutme i {
-    padding-left: 335px;
+    padding-left: 325px;
     color: rgba(216, 0, 69, 1);
 }
 
@@ -73,3 +73,15 @@ h2 {
     text-align: center;
     font-weight: bold;
 }
+
+.myskills i {
+    padding-left: 340px;
+    padding-top: 50px;
+    color: rgba(216, 0, 69, 1);
+}
+
+.myskills h1 {
+    text-align: center;
+    font-weight: bold;
+}
+
