@@ -85,3 +85,52 @@ h2 {
     font-weight: bold;
 }
 
+.containerFooter h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+    color: rgba(216, 0, 69, 1);
+}
+
+.containerFooter i {
+    text-align: center;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.containerFooter {
+    background-color: #333;
+}
+
+.phoneandmail {
+    text-align: center;
+    padding-top: 35px;
+}
+
+.GithubLinkedin {
+    text-align: center;
+    padding-top: 35px;
+}
+
+.fa-github:before {
+    content: "\f09b";
+    font-size: 11vh;
+    color: #808080;
+}
+
+.fa-linkedin-square:before {
+    content: "\f08c";
+    font-size: 11vh;
+    color: #808080;
+}
+
+.fa-phone:before {
+    content: "\f095";
+    color: #808080;
+}
+
+.fa-envelope:before {
+    content: "\f0e0";
+    color: #808080;
+}
+
