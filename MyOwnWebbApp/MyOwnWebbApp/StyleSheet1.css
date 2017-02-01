@@ -44,6 +44,11 @@ a {
     text-align: center;
 }
 
+h2 {
+    font-size: 100px;
+    color: #000000
+}
+
 .intro-content {
     overflow: auto;
     position: absolute;
@@ -54,4 +59,8 @@ a {
 
   height: 100vh;
     width: 100%;
+}
+
+.intro-header i {
+    color: rgba(216, 0, 69, 1);
 }
