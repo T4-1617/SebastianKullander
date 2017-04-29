@@ -40,9 +40,14 @@ namespace SteamChatBot
 
             new Callback<SteamClient.ConnectedCallback>(OnConnected, manager);
 
-            steamClient.Connect();
+            new Callback<SteamUser.LoggedOnCallback>(OnLoggedOn, manager);
 
             isRunning = true;
+
+            Console.WriteLine("Connecting to steam...");
+
+            steamClient.Connect();
+
             while (isRunning)
             {
                 manager.RunWaitCallbacks(TimeSpan.FromSeconds(1));
@@ -57,6 +62,31 @@ namespace SteamChatBot
                 isRunning = false;
                 return;
             }
+
+            Console.WriteLine("Connected to steam. Logging in {0}...", user);
+
+            steamUser.LogOn(new SteamUser.LogOnDetails
+            {
+                Username = user,
+                Password = pass,
+            });
+        }
+
+        static void OnLoggedOn(SteamUser.LoggedOnCallback callback)
+        {
+            if (callback.Result != EResult.AccountLogonDenied)
+            {
+                Console.WriteLine("This account is SteamGuard protected.");
+            }
+            if (callback.Result != EResult.OK)
+            {
+                Console.WriteLine("Unable to log in to steam: {0}", callback.Result);
+                isRunning = false;
+                return;
+            }
+            Console.WriteLine("{0} Succesfully logged in!", user);
+            Console.ReadKey();
+            Environment.Exit(0);
         }
     }
 }
