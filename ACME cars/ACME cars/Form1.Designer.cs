@@ -97,7 +97,7 @@
             // 
             this.btnReturnCar.Location = new System.Drawing.Point(174, 25);
             this.btnReturnCar.Name = "btnReturnCar";
-            this.btnReturnCar.Size = new System.Drawing.Size(75, 23);
+            this.btnReturnCar.Size = new System.Drawing.Size(69, 23);
             this.btnReturnCar.TabIndex = 4;
             this.btnReturnCar.Text = "Return Car";
             this.btnReturnCar.UseVisualStyleBackColor = true;
@@ -107,6 +107,7 @@
             // 
             this.panel1.Controls.Add(this.textBox4);
             this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
@@ -214,12 +215,13 @@
             // 
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.textBox3);
             this.panel2.Controls.Add(this.textBox2);
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.button4);
-            this.panel2.Location = new System.Drawing.Point(334, 54);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(173, 122);
             this.panel2.TabIndex = 0;
@@ -286,8 +288,9 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.btnReturnRentedCar);
+            this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.listBox2);
-            this.panel3.Location = new System.Drawing.Point(513, 54);
+            this.panel3.Location = new System.Drawing.Point(3, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(228, 122);
             this.panel3.TabIndex = 0;
@@ -315,7 +318,7 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.listBox3);
-            this.panel4.Location = new System.Drawing.Point(747, 54);
+            this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(255, 124);
             this.panel4.TabIndex = 9;
@@ -331,9 +334,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(255, 25);
+            this.button1.Location = new System.Drawing.Point(249, 25);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 23);
+            this.button1.Size = new System.Drawing.Size(100, 23);
             this.button1.TabIndex = 14;
             this.button1.Text = "Show Customers";
             this.button1.UseVisualStyleBackColor = true;
@@ -343,11 +346,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 202);
+            this.ClientSize = new System.Drawing.Size(361, 260);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnReturnCar);
             this.Controls.Add(this.btnAddCar);
