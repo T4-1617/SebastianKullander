@@ -20,7 +20,7 @@ namespace SteamChatBot
         static bool isRunning = false;
 
         static string authCode;
-        static string twofactor;
+        static string twoFactor;
 
         static void Main(string[] args)
         {
@@ -90,7 +90,7 @@ namespace SteamChatBot
 
                 AuthCode = authCode,
                 SentryFileHash = sentryHash,
-                TwoFactorCode = twofactor,
+                TwoFactorCode = twoFactor,
             });
         }
 
@@ -99,8 +99,15 @@ namespace SteamChatBot
             if (callback.Result == EResult.AccountLogonDeniedNeedTwoFactorCode)
             {
                 Console.Write("Please Enter In Your Two Factor Auth Code: ");
-                twofactor = Console.ReadLine();
+                twoFactor = Console.ReadLine();
                 return;
+            }
+
+            else
+            {
+                Console.WriteLine("Account is steam guard Protected.");
+                Console.Write("Please enter the auth code sent to the email at {0}: ", callback.EmailDomain);
+                authCode = Console.ReadLine();
             }
 
             if (callback.Result != EResult.OK)
