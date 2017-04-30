@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SteamKit2;
+using System.IO;
+using System.Threading;
 
 namespace SteamChatBot
 {
@@ -17,15 +19,18 @@ namespace SteamChatBot
 
         static bool isRunning = false;
 
+        static string authCode;
+        static string twofactor;
+
         static void Main(string[] args)
         {
             Console.Title = "A Bot";
             Console.WriteLine("CTRL+C exits the program.");
 
-            Console.Write("username: ");
+            Console.Write("Username: ");
             user = Console.ReadLine();
 
-            Console.Write("password: ");
+            Console.Write("Password: ");
             pass = Console.ReadLine();
 
             SteamLogIn();
@@ -41,6 +46,10 @@ namespace SteamChatBot
             new Callback<SteamClient.ConnectedCallback>(OnConnected, manager);
 
             new Callback<SteamUser.LoggedOnCallback>(OnLoggedOn, manager);
+
+            new Callback<SteamClient.DisconnectedCallback>(OnDisconnected, manager);
+
+            manager.Subscribe<SteamUser.UpdateMachineAuthCallback>(OnMachineAuth);
 
             isRunning = true;
 
@@ -65,19 +74,35 @@ namespace SteamChatBot
 
             Console.WriteLine("Connected to steam. Logging in {0}...", user);
 
+            byte[] sentryHash = null;
+
+            if (File.Exists("sentry.bin"))
+            {
+                byte[] sentryFile = File.ReadAllBytes("sentry.bin");
+
+                sentryHash = CryptoHelper.SHAHash(sentryFile);
+            }
+
             steamUser.LogOn(new SteamUser.LogOnDetails
             {
                 Username = user,
                 Password = pass,
+
+                AuthCode = authCode,
+                SentryFileHash = sentryHash,
+                TwoFactorCode = twofactor,
             });
         }
 
         static void OnLoggedOn(SteamUser.LoggedOnCallback callback)
         {
-            if (callback.Result != EResult.AccountLogonDenied)
+            if (callback.Result == EResult.AccountLogonDeniedNeedTwoFactorCode)
             {
-                Console.WriteLine("This account is SteamGuard protected.");
+                Console.Write("Please Enter In Your Two Factor Auth Code: ");
+                twofactor = Console.ReadLine();
+                return;
             }
+
             if (callback.Result != EResult.OK)
             {
                 Console.WriteLine("Unable to log in to steam: {0}", callback.Result);
@@ -85,8 +110,40 @@ namespace SteamChatBot
                 return;
             }
             Console.WriteLine("{0} Succesfully logged in!", user);
-            Console.ReadKey();
-            Environment.Exit(0);
+            Console.WriteLine("Log in status: {0}", callback.Result);
+        }
+
+        static void OnMachineAuth(SteamUser.UpdateMachineAuthCallback callback)
+        {
+            Console.WriteLine("Updating sentry file...");
+
+            byte[] sentryHash = CryptoHelper.SHAHash(callback.Data);
+
+            File.WriteAllBytes("sentry.bin", callback.Data);
+
+            steamUser.SendMachineAuthResponse(new SteamUser.MachineAuthDetails
+            {
+                JobID = callback.JobID,
+                FileName = callback.FileName,
+                BytesWritten = callback.BytesToWrite,
+                FileSize = callback.Data.Length,
+                Offset = callback.Offset,
+                Result = EResult.OK,
+                LastError = 0,
+                OneTimePassword = callback.OneTimePassword,
+                SentryFileHash = sentryHash,
+            });
+
+            Console.WriteLine("Done.");
+        }
+
+        static void OnDisconnected(SteamClient.DisconnectedCallback callback)
+        {
+            Console.WriteLine("{0} disconnected from steam, reconnecting in 5 seconds...", user);
+
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+
+            steamClient.Connect();
         }
     }
 }
