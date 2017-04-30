@@ -161,12 +161,102 @@ namespace SteamChatBot
 
         static void OnChatMessage(SteamFriends.FriendMsgCallback callback)
         {
+            string[] args;
+
             if (callback.EntryType == EChatEntryType.ChatMsg)
             {
-                steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, "Hello");
+                if (callback.Message.Length > 1)
+                {
+                    if (callback.Message.Remove(1) == "!")
+                    {
+                        string command = callback.Message;
+                        if (callback.Message.Contains(" "))
+                        {
+                            command = callback.Message.Remove(callback.Message.IndexOf(' '));
+                        }
+
+                        switch (command)
+                        {
+                            #region send
+                            case "!send"://!send friendname message
+                                args = seperate(2, ' ', callback.Message);//args[0] = !send, args[1] = friendname, args[2] = message, args[3-4] = null;
+                                Console.WriteLine("!send " + args[1] + args[2] + " command recieved. User: " + steamFriends.GetFriendPersonaName(callback.Sender));
+                                if (args[0] == "-1")
+                                {
+                                    steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, "Command syntax: !send [friend] [message]");
+                                    return;
+                                }
+                                for (int i = 0; i < steamFriends.GetFriendCount(); i++)
+                                {
+                                    SteamID friend = steamFriends.GetFriendByIndex(i);//steamFriend.GetFriendByIndex(0) = 1243132134124;
+                                    if (steamFriends.GetFriendPersonaName(friend).ToLower().Contains(args[1].ToLower()))//!send bob message or !send marley message
+                                    {
+                                        steamFriends.SendChatMessage(friend, EChatEntryType.ChatMsg, args[2]);
+                                    }
+                                }
+                                    break;
+                            #endregion
+                            #region checkFriendlistStatus
+                            case "!friends":
+                                Console.WriteLine("!friends command recieved. User: " + steamFriends.GetFriendPersonaName(callback.Sender));
+                                for (int i = 0; i < steamFriends.GetFriendCount(); i++ )
+                                {
+                                    SteamID friend = steamFriends.GetFriendByIndex(i);
+                                    steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, "Friend: " + steamFriends.GetFriendPersonaName(friend) + " State: " + steamFriends.GetFriendPersonaState(friend));
+                                }
+                                break;
+                            #endregion
+                        }
+                    }
+                }
             }
             
 
         }
+
+        public static string[] seperate(int number, char seperator, string thestring)
+        {
+            string[] returned = new string[4];
+
+            int i = 0;
+
+            int error = 0;
+
+            int length = thestring.Length;
+
+            foreach (char c in thestring)
+            {
+                if (i != number)
+                {
+                    if(error > length || number > 5)
+                    {
+                        returned[0] = "-1";
+                        return returned;
+                    }
+                    else if (c == seperator)
+                    {
+                        returned[i] = thestring.Remove(thestring.IndexOf(c));
+                        thestring = thestring.Remove(0, thestring.IndexOf(c) + 1);
+                        i++;
+                    }
+                    error++;
+
+                    if (error == length && i != number)
+                    {
+                        returned[0] = "-1";
+                        return returned;
+                    }
+                }
+                else
+                {
+                    returned[i] = thestring;
+                }
+            }
+            return returned;
+        }  
     }
 }
+
+//commands for the bot
+//!send <SteamName> <YourMessage>
+//!friends
