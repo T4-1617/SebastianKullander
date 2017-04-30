@@ -16,6 +16,7 @@ namespace SteamChatBot
         static SteamClient steamClient;
         static CallbackManager manager;
         static SteamUser steamUser;
+        static SteamFriends steamFriends;
 
         static bool isRunning = false;
 
@@ -42,12 +43,17 @@ namespace SteamChatBot
             manager = new CallbackManager(steamClient);
 
             steamUser = steamClient.GetHandler<SteamUser>();
+            steamFriends = steamClient.GetHandler<SteamFriends>();
 
             new Callback<SteamClient.ConnectedCallback>(OnConnected, manager);
 
             new Callback<SteamUser.LoggedOnCallback>(OnLoggedOn, manager);
 
+            new Callback<SteamUser.AccountInfoCallback>(OnAccountInfo, manager);
+
             new Callback<SteamClient.DisconnectedCallback>(OnDisconnected, manager);
+
+            new Callback<SteamFriends.FriendMsgCallback>(OnChatMessage, manager);
 
             manager.Subscribe<SteamUser.UpdateMachineAuthCallback>(OnMachineAuth);
 
@@ -102,7 +108,7 @@ namespace SteamChatBot
                 twoFactor = Console.ReadLine();
                 return;
             }
-
+            
             if (callback.Result != EResult.OK)
             {
                 Console.WriteLine("Unable to log in to steam: {0}", callback.Result);
@@ -144,6 +150,23 @@ namespace SteamChatBot
             Thread.Sleep(TimeSpan.FromSeconds(5));
 
             steamClient.Connect();
+        }
+
+        static void OnAccountInfo(SteamUser.AccountInfoCallback callback)
+        {
+            steamFriends.SetPersonaState(EPersonaState.Online);
+
+
+        }
+
+        static void OnChatMessage(SteamFriends.FriendMsgCallback callback)
+        {
+            if (callback.EntryType == EChatEntryType.ChatMsg)
+            {
+                steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, "Hello");
+            }
+            
+
         }
     }
 }
