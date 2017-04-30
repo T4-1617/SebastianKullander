@@ -103,13 +103,6 @@ namespace SteamChatBot
                 return;
             }
 
-            else
-            {
-                Console.WriteLine("Account is steam guard Protected.");
-                Console.Write("Please enter the auth code sent to the email at {0}: ", callback.EmailDomain);
-                authCode = Console.ReadLine();
-            }
-
             if (callback.Result != EResult.OK)
             {
                 Console.WriteLine("Unable to log in to steam: {0}", callback.Result);
