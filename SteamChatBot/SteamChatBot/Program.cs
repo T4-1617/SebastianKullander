@@ -20,7 +20,6 @@ namespace SteamChatBot
 
         static bool isRunning = false;
 
-        static string authCode;
         static string twoFactor;
 
         static void Main(string[] args)
@@ -88,9 +87,8 @@ namespace SteamChatBot
                 Username = user,
                 Password = pass,
 
-                AuthCode = authCode,
-                SentryFileHash = sentryHash,
                 TwoFactorCode = twoFactor,
+                SentryFileHash = sentryHash,   
             });
         }
 
