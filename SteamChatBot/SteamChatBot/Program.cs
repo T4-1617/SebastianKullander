@@ -24,6 +24,12 @@ namespace SteamChatBot
 
         static void Main(string[] args)
         {
+            if (!File.Exists("chat.txt"))
+            {
+                File.Create("chat.txt").Close();
+                File.WriteAllText("chat.txt", "abc | 123");
+            }
+
             Console.Title = "A Bot";
             Console.WriteLine("CTRL+C exits the program.");
 
@@ -200,6 +206,33 @@ namespace SteamChatBot
                             #endregion
                         }
                     }
+                    string rLine;
+                    string trimmed = callback.Message;
+
+                    //getting rid of all special characters so hello! = hello
+                    char[] trim = { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', '\\', '|', ';', ':', '"', '\'', ',', '<', '.', '>', '/', '?' };
+
+                    //30 characters
+                    for (int i = 0; i < 30; i++)
+                    {
+                        trimmed = trimmed.Replace(trim[i].ToString(), "");
+                    }
+
+                    StreamReader sReader = new StreamReader("chat.txt");
+
+                    while ((rLine = sReader.ReadLine()) != null)
+                    {
+                        string text = rLine.Remove(rLine.IndexOf('|') - 1);//message | response
+                        string response = rLine.Remove(0, rLine.IndexOf('|') + 2);
+                        
+                        if(callback.Message.Contains(text))
+                        {
+                            steamFriends.SendChatMessage(callback.Sender, EChatEntryType.ChatMsg, response);
+                            sReader.Close();
+                            return;
+                        }
+                    }
+
                 }
             }
             
