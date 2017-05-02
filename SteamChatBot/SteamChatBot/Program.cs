@@ -45,16 +45,10 @@ namespace SteamChatBot
             steamUser = steamClient.GetHandler<SteamUser>();
             steamFriends = steamClient.GetHandler<SteamFriends>();
 
-            new Callback<SteamClient.ConnectedCallback>(OnConnected, manager);
-
-            new Callback<SteamUser.LoggedOnCallback>(OnLoggedOn, manager);
-
-            new Callback<SteamUser.AccountInfoCallback>(OnAccountInfo, manager);
-
-            new Callback<SteamClient.DisconnectedCallback>(OnDisconnected, manager);
-
-            new Callback<SteamFriends.FriendMsgCallback>(OnChatMessage, manager);
-
+            manager.Subscribe<SteamClient.ConnectedCallback>(OnConnected);
+            manager.Subscribe<SteamUser.LoggedOnCallback>(OnLoggedOn);
+            manager.Subscribe<SteamUser.AccountInfoCallback>(OnAccountInfo);
+            manager.Subscribe<SteamClient.DisconnectedCallback>(OnDisconnected);
             manager.Subscribe<SteamUser.UpdateMachineAuthCallback>(OnMachineAuth);
 
             isRunning = true;
