@@ -1,0 +1,65 @@
+﻿body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#firstSection {
+    background-image: url('../Pictures/alex-siale-95113.jpg');
+    background-size: cover;
+    line-height: 1.2;
+    padding: 10vw 2em;
+    z-index: -1;
+}
+
+#secondSection {
+    z-index: 1;
+}
+
+p {
+    color: #555;
+    margin: 0 auto;
+    max-width: 50em;
+    font-family: "Helvetica", "Arial", sans-serif;
+    line-height: 1.5;
+    padding: 4em 1em;
+}
+
+#parallax1 {
+    z-index: 1;
+    position: relative;
+}
+
+#parallax2 {
+    background-color: rgb(255,255,255);
+    z-index: 2;
+    position: relative;
+}
+
+#parallax3 {
+    z-index: 1;
+    position: relative;
+}
+
+#parallax4 {
+    position: relative;
+    z-index: 3;
+}
+
+#parallax5 {
+    position: relative;
+    z-index: 3;
+}
+
+#MarioBox {
+    position: relative;
+    z-index: 3;
+    top: -740px;
+    margin-left: 84%;
+}
+
+#ClickMe {
+    position: relative;
+    z-index: 3;
+    top: -945px;
+    margin-left: 81%;
+}
