@@ -1,65 +1,151 @@
 ﻿body {
     padding-top: 0px;
-    padding-bottom: 0px;
+    padding-bottom: 0px; 
+    background-color: #7289da;
 }
 
 #firstSection {
-    background-image: url('../Pictures/alex-siale-95113.jpg');
+    background-image: url('../pictures/alex-siale-95113.jpg');
+    height: 100vh;
+    background-position: center top;
+    background-repeat: no-repeat;
     background-size: cover;
-    line-height: 1.2;
-    padding: 10vw 2em;
-    z-index: -1;
+    background-attachment: fixed;
+    z-index: 2;
 }
 
-#secondSection {
-    z-index: 1;
+#angleDown {
+    font-size: 150px;
+    color: white;
 }
+
+#centerAngleDown {
+    text-align: center;
+}
+
 
 p {
-    color: #555;
+    font-family: 'Lato', serif;
     margin: 0 auto;
     max-width: 50em;
-    font-family: "Helvetica", "Arial", sans-serif;
-    line-height: 1.5;
-    padding: 4em 1em;
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    padding-top: 40vh;
+    font-weight: bold;
+    z-index: 4;
 }
 
-#parallax1 {
-    z-index: 1;
+#parallax-bg4 {
+    z-index: 3;
     position: relative;
 }
 
-#parallax2 {
-    background-color: rgb(255,255,255);
+#parallax-bg3 {
+    z-index: 3;
+    position: relative;
+    left: 50%;
+    top: 0;
+    width: 940px;
+    margin-left: -470px;
+}
+
+#bg3-1 {
+    position: relative;
+    top: -111px;
+    left: 355px;
+}
+
+#bg3-2 {
+    position: relative;
+    top: 812px;
+    left: 321px;
+}
+
+#bg3-3 {
+    position: relative;
+    top: 1628px;
+    left: 403px;
+}
+
+#bg3-4 {
+    position: relative;
+    top: 2700px;
+    left: -85px;
+}
+
+#parallax-bg2 {
     z-index: 2;
     position: relative;
+    left: 50%;
+    top: 0;
+    width: 1200px;
+    margin-left: -600px;
 }
 
-#parallax3 {
+#bg2-1 {
+    position: relative;
+    top: 162px;
+    left: 200px;
+}
+
+#bg2-2 {
+    position: relative;
+    top: 300px;
+    left: 1150px;
+}
+
+#bg2-3 {
+    position: relative;
+    top: 543px;
+    left: -35px;
+}
+
+#bg2-4 {
+    position: relative;
+    top: 1180px;
+    left: 250px;
+}
+
+#bg2-5 {
+    position: relative;
+    top: 900px;
+    left: 890px;
+}
+
+#parallax-bg1 {
     z-index: 1;
     position: relative;
+    left: 50%;
+    top: 0;
+    width: 1200px;
+    margin-left: -600px;
 }
 
-#parallax4 {
+#bg1-1 {
     position: relative;
-    z-index: 3;
+    top: 85px;
+    left: -270px;
 }
 
-#parallax5 {
+#bg1-2 {
     position: relative;
-    z-index: 3;
+    top: 440px;
+    left: 795px;
 }
 
-#MarioBox {
+#bg1-3 {
     position: relative;
-    z-index: 3;
-    top: -740px;
-    margin-left: 84%;
+    top: 900px;
+    left: -220px;
 }
 
-#ClickMe {
+#bg1-4 {
     position: relative;
-    z-index: 3;
-    top: -945px;
-    margin-left: 81%;
+    top: -2150px;
+    left: 190px;
+}
+
+#f {
+    z-index: 1;
 }
