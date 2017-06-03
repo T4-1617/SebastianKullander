@@ -24,7 +24,7 @@
 }
 
 
-p {
+h1 {
     font-family: 'Lato', serif;
     margin: 0 auto;
     max-width: 50em;
@@ -34,6 +34,29 @@ p {
     padding-top: 40vh;
     font-weight: bold;
     z-index: 4;
+}
+
+h2 {
+    font-family: 'Lato', serif;
+    margin: 0 auto;
+    max-width: 50em;
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    padding-top: 45vh;
+    font-weight: bold;
+    z-index: 4;
+}
+
+p {
+    font-family: 'Lato', serif;
+    z-index: 4;
+    text-align: center;
+    color: white;
+}
+
+#secondSectionText {
+    padding-top: 4vh;
 }
 
 #parallax-bg4 {
@@ -86,7 +109,7 @@ p {
 #bg2-1 {
     position: relative;
     top: 162px;
-    left: 200px;
+    left: 50px;
 }
 
 #bg2-2 {

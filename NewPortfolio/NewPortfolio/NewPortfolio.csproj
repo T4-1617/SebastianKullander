@@ -103,6 +103,7 @@
     <Content Include="Pictures\coin.svg" />
     <Content Include="Pictures\controlxbox.svg" />
     <Content Include="Pictures\cross.svg" />
+    <Content Include="Pictures\HTMLp.svg" />
     <Content Include="Pictures\mariobox.svg" />
     <Content Include="Pictures\memory.svg" />
     <Content Include="Pictures\potion.svg" />
